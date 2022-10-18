@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Set the viewport the way Bootstrap likes it -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>World Disaster Risk Visualization</title>
+    
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Plotly library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Leaflet CSS -->   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+</head>
+
+
+<body>
+ <!-- navbar -->
+ <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home.html">About</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-6 col-md-12">
+        <!-- The div that holds our map -->
+        <div id="map" style="width:600px; height: 400px"></div>
+  
+        <!-- Our JavaScript file -->
+        <script type="text/javascript" src="../static/js/logic.js"></script>
+      
+      </div>
+
+      <div class="col-lg-5 col-md-12">
+
+        <h3>How to Work the Dashboard</h3>
+        <br>
+        <br>
+        <p>This would be where we put super awesome instructions about how to work the dashboard. this would include the interactive map, bar chart, and line graph. I'm just now typing more placeholder words so we can see what this would look like. I think we are doing a really great job! Great Work Team!</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+   <!-- Adding the first plot 
+   <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div id="plot1">
+          <script src=""></script>
+          <script src="../static/js/plots.js"></script>
+        </div>
+      </div>
+
+      <!- Adding the secont plot -->
+      <!-- <div class="col-lg-5 col-md-12">
+        <div class="row">
+        <div class="col- lg-6 col-md-12">
+          <div id="plot2">
+          <script src=""></script>
+          <script src="../static/js/plots.js"></script>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div> --> 
+          
+<!-- The div that holds our map: HYEEUN -->
+<div class ="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="well">
+        <h4>Year:</h4>
+        <!-- Add buildPlot to go look at dropdown in order to get the value of it  -->
+        <select id="selDataset" onchange="buildPlot()"></select>
+      </div>
+</div>
+    <div class="col-sm-6 col-md-6">
+      <div id="map-id"></div>
+        <div class="info"></div>
+        <div id="range-slider-1"></div>
+        <div class="leadlet -top leaflet-right"></div>
+        <div class="info leaflet-control"></div>
+    </div>
+
+    <div id="sample-metadata">
+
+    </div>
+
+    <div class="col-md-6">
+      <h5>Choose a year on the drop down menu and click on the map to choose country</h4>
+      <h6>Mouse hover on the line chart</h6>
+      <h7>Mouse over the barchart for more information</h7>
+      <div class="about">
+        <a href="/about">About The Dashboard</a>
+      <div class="text1 text-center"></div> 
+      <div class="text2 text-center"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="lineChart">
+          <div id="chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div id="barChart">
+        <div id="bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+    
+
+ 
+  
+  
+
+    <!-- Import the Bootstrap JavaScript code -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+</body>
+  
+  
+
+
+
+
+
+
